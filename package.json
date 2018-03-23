@@ -1,0 +1,31 @@
+{
+  "name": "tests-generator",
+  "version": "0.0.1",
+  "description": "generate tests based on templates",
+  "main": "index.js",
+  "bin": {
+    "gen-tests": "./cli.js"
+  },
+  "scripts": {
+    "test": "mocha test",
+    "lint": "eslint .",
+    "coverage": "./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha -- -R spec"
+  },
+  "author": {
+    "name": "Ahmad Alhyari",
+    "email": "ahmad.alhyari@gmail.com",
+    "url": "https://github.com/ahyari"
+  },
+  "repository": "ahyari/tests-generator",
+  "license": "MIT",
+  "dependencies": {
+    "cli": "^1.0.0"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "istanbul": "^0.4.2",
+    "jshint": "^2.9.1",
+    "mocha": "^2.4.5",
+    "rewire": "^2.5.1"
+  }
+}

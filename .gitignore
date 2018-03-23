@@ -1,0 +1,21 @@
+# folders
+node_modules/
+temp/
+results/
+coverage/
+.idea/
+
+# files
+*.log
+
+# env files
+.env
+
+# mac crap :D
+.DS_Store
+
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
