@@ -1,6 +1,6 @@
 const expect = require('chai').expect;
 
-/*var workerConfigsPackageController = require('$$file_name');*/
+var workerConfigsPackageController = require('$$file_name');
 
 describe("Feature", function () {
  describe("Senario", function () {
