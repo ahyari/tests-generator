@@ -1,10 +1,9 @@
 {
   "name": "tests-generator",
-  "version": "0.0.1",
+  "version": "0.0.1 beta",
   "description": "generate tests based on templates",
-  "main": "index.js",
   "bin": {
-    "gen-tests": "./cli.js"
+    "gen-tests": "src/cli.js"
   },
   "scripts": {
     "test": "mocha test",
