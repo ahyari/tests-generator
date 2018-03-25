@@ -1,10 +1,16 @@
 # tests-generator
 This package is work in progress tool to generate tests for nodejs app. it's purpose is to help add unit and integration tests to old node projects.
 
-###Usage:
+## Install
+```sh
+$ npm install nexrender [-g]
+```
+
+
+## Usage:
   tests-generator [OPTIONS] [ARGS]
 
-###Options
+## Options
    
 * **-src**, --source [FILE]  target code directory (Default is src/)
 * **-ut**, --unitTestDirectory [FILE]target unit test directory (Default is test/unit/)
