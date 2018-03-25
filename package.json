@@ -1,6 +1,6 @@
 {
-  "name": "tests-generator",
-  "version": "0.0.1",
+  "name": "gen-tests",
+  "version": "0.0.2",
   "description": "generate tests based on templates",
   "bin": {
     "gen-tests": "src/cli.js"

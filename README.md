@@ -3,12 +3,12 @@ This package is work in progress tool to generate tests for nodejs app. it's pur
 
 ## Install
 ```sh
-$ npm i tests-generator [-g]
+$ npm i gen-tests [-g]
 ```
 
 
 ## Usage:
-  tests-generator [OPTIONS] [ARGS]
+  gen-tests [OPTIONS] [ARGS]
 
 ## Options
    
