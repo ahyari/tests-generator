@@ -1,7 +1,12 @@
 {
   "name": "gen-tests",
-  "version": "0.0.3",
+  "version": "0.0.5",
   "description": "generate tests based on templates",
+  "keywords": [
+    "tests",
+    "unit-test",
+    "cli"
+  ],
   "bin": {
     "gen-tests": "src/cli.js"
   },

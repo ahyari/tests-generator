@@ -1,4 +1,4 @@
-# tests-generator
+# gen-tests
 This package is work in progress tool to generate tests for nodejs app. it's purpose is to help add unit and integration tests to old node projects.
 
 ## Install
