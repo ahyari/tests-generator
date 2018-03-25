@@ -3,7 +3,7 @@ This package is work in progress tool to generate tests for nodejs app. it's pur
 
 ## Install
 ```sh
-$ npm install nexrender [-g]
+$ npm i tests-generator [-g]
 ```
 
 
