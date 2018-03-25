@@ -2,34 +2,35 @@
 
 'use strict';
 const TestGenerator =  require('./TestGenerator');
-const version = require('../package.json').version;
+const pakg = require('../package.json');
+const version = pakg.version;
+const name = pakg.name;
 const os        = require('os');
 const cli       = require('cli').enable('version');
 
+cli.setApp(name, version)
+
 cli.parse({
-    version:      ['v',   'Get version'],
-    src: [ 'src', 'target code directory', 'file', 'src/' ],
-    unitTest: [ 'unit-test', 'target unit test directory', 'file', 'test/unit/' ],
-    integTest: [ 'integ-test', 'target unit test directory', 'file', 'test/unit/' ],
-    unitTestTemplate : [ 'unit-test-template', 'template for unit test', 'file', 'node_modules/tests-generator/src/templates/unit-test.js' ],
-    integTestTemplate : [ 'integ-test-template', 'template for integration test', 'file', 'node_modules/tests-generator/src/templates/integration-test.js' ],
-    excludedDirectories : ['exclude-dir','comma separated directory names','string','algorithm-repository, data, routes, bin'],
-    excludedFiles : ['exclude-dir','comma separated file names','string','app.js'],
+    source: [ 'src', 'target code directory', 'file', 'src/' ],
+    unitTestDirectory : [ 'ut', 'target unit test directory', 'file', 'test/unit/' ],
+    integrationTestDirectory: [ 'it', 'target unit test directory', 'file', 'test/unit/' ],
+    unitTestTemplate : [ 'utt', 'template for unit test', 'file', 'node_modules/tests-generator/src/templates/unit-test.js' ],
+    integrationTestTemplate : [ 'itt', 'template for integration test', 'file', 'node_modules/tests-generator/src/templates/integration-test.js' ],
+    excludedDirectories : ['ed','comma separated directory names','string','algorithm-repository, data, routes, bin'],
+    excludeFiles : ['ef','comma separated file names','string','app.js'],
 
 });
 
 cli.main(function(args, options) {
 
-    if (options.version) {
-        return console.log('tests-generator version:', version)
-    }
-    else {
+    if (!options.version && !options.help) {
+
         var generateUnitTests = new TestGenerator(
             options.src,
-            options.unitTest,
-            options.integTest,
+            options.uniteTestDir,
+            options.integrationTestDirectory,
             options.unitTestTemplate,
-            options.integTestTemplate,
+            options.integrationTestTemplate,
             options.excludedDirectories,
             options.excludedFiles);
 
