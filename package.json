@@ -1,6 +1,6 @@
 {
   "name": "gen-tests",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "generate tests based on templates",
   "keywords": [
     "tests",
@@ -11,6 +11,7 @@
     "gen-tests": "src/cli.js"
   },
   "scripts": {
+    "start": "node cli.js",
     "test": "mocha test",
     "coverage": "./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha -- -R spec"
   },

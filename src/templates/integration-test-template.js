@@ -2,8 +2,8 @@ const mocha = require('mocha');
 const chai = require('chai');
 const chaiHttp = require('chai-http');
 const rp = require('request-promise');
-var BaseTest = require('$$pathToUnitTest/BaseTest');
 
+const BaseTest = require('$$pathToUnitTest/BaseTest');
 
 chai.use(chaiHttp);
 const expect = chai.expect;

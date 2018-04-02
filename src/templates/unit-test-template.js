@@ -1,14 +1,16 @@
-var expect = require('chai').expect;
-var assert = require('chai').assert;
-var chai = require('chai');
-var rewire = require('rewire');
-var Promise = require('bluebird');
-var chaiAsPromised = require("chai-as-promised");
-var BaseTest = require('$$pathToTestBaseTest');
+const chai = require('chai');
+const rewire = require('rewire');
+const Promise = require('bluebird');
+const chaiAsPromised = require("chai-as-promised");
 
-var $$file_name = require('$$pathToSrc$$file_name');
+const expect = require('chai').expect;
+const assert = require('chai').assert;
 
-class $$Class_Name extends BaseTest {
+const BaseTest = require('pathToBaseTestBaseTest');
+
+var targetFile = require('pathToSrctargetFile');
+
+class ClassName extends BaseTest {
 
     executeTests() {
 
@@ -40,4 +42,4 @@ class $$Class_Name extends BaseTest {
     }
 }
 
-(new $$Class_Name()).executeTests();
+(new ClassName()).executeTests();

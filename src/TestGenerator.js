@@ -5,7 +5,7 @@ const shell = require("shelljs");
 class TestGenerator {
 
     constructor(src, unitTest, integTest, unitTestTemplate, integTestTemplate, excludedDirectories, excludedFiles, type
-    ,baseTestClass) {
+        , baseTestClass) {
         this.srcDir = src;
         this.uniteTestDir = unitTest;
         this.integTestDir = integTest;
@@ -22,13 +22,13 @@ class TestGenerator {
         if (self.testType === "unit") {
             //generate unit test
             self.createTestsFiles(this.srcDir, self.uniteTestDir, self.unitTestTemplate);
-            self.copyData(this.uniteTestDir, "", self.baseTestClass);
+            self.copyData(this.uniteTestDir, "", "BaseTest.js", self.baseTestClass);
             console.log("Unit tests generated successfully.");
         }
         else {
             //generate integration
             self.createTestsFiles(self.srcDir, self.integTestDir, self.integTestTemplate);
-            self.copyData(self.integTestDir, "", self.baseTestClass);
+            self.copyData(self.integTestDir, "", "BaseTest.js", self.baseTestClass);
             console.log("Integration tests generated successfully.");
         }
 
@@ -48,7 +48,7 @@ class TestGenerator {
                         console.log("failed to create directory", err);
                     }
                     else {
-                        self.createTestsFiles(srcPath + file + "/", destPath + file + "/",testTemplate);
+                        self.createTestsFiles(srcPath + file + "/", destPath + file + "/", testTemplate);
                     }
                 });
             }
@@ -62,7 +62,7 @@ class TestGenerator {
                 const testFileName = destPath + file.replace(".js", ".spec.js");
 
                 if (!fs.existsSync(testFileName)) {
-                    self.copyData(testFileName, srcPath + file, testTemplate);
+                    self.copyData(testFileName, srcPath, file, testTemplate);
                 }
 
             }
@@ -75,25 +75,26 @@ class TestGenerator {
         return Array(depth).join("../");
     };
 
-    copyData(savPath, targetFile, fileToCopy) {
+    copyData(savPath, srcPath, fileName, fileToCopy) {
         try {
             let data = fs.readFileSync(fileToCopy, "utf8");
 
-            data = data
-                .replace("$$srcPath", TestGenerator.getPathPrefix(savPath) + targetFile)
-                .replace("$$unitTestPath", TestGenerator.getPathPrefix(savPath, "unit"))
-                .replace("$$Class_Name", targetFile);
 
-            fs.writeFile(savPath, data, function (err) {
+            let tempData = data
+                .replace(new RegExp("pathToBaseTest", 'g'), TestGenerator.getPathPrefix(savPath))
+                .replace(new RegExp("targetFile", 'g'), fileName)
+                .replace(new RegExp("pathToSrc", 'g'), TestGenerator.getPathPrefix(srcPath,"src"))
+                .replace(new RegExp("unitTestPath", 'g'), TestGenerator.getPathPrefix(savPath, "unit"))
+                .replace(new RegExp("ClassName", 'g'), fileName)
+                .replace(new RegExp("(.js)", 'g'), "");
+
+            fs.writeFile(savPath + fileName, tempData, function (err) {
                 if (err) {
                     console.log("failed to create directory", err);
                 }
-                else {
-                    console.log("Test file created :" + savPath);
-                }
             });
         } catch (err) {
-            console.log("Error reading :" + fileToCopy, "savPath : ",savPath, "targetFile : ",targetFile);
+            console.log("Error reading :" + fileToCopy, "savPath : ", savPath, "fileName : ", fileName);
             console.error("Error details :" + err);
         }
     };
