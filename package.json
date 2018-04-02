@@ -1,6 +1,6 @@
 {
   "name": "gen-tests",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "generate tests based on templates",
   "keywords": [
     "tests",
