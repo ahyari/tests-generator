@@ -20,4 +20,4 @@ coverage/
 !.vscode/launch.json
 !.vscode/extensions.json
 /npm-debug.log
-test/
+/package-lock.json

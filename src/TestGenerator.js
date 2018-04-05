@@ -75,6 +75,14 @@ class TestGenerator {
         return Array(depth).join("../");
     };
 
+    static getClassName(string) {
+
+        return string.replace(/[^\w\s]/gi, ' ')
+            .replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();})
+            .replace(new RegExp(" ", 'g'), '')
+            .replace(new RegExp(".js", 'g'), '');
+    };
+
     copyData(savPath, srcPath, fileName, fileToCopy) {
         try {
             let data = fs.readFileSync(fileToCopy, "utf8");
@@ -82,11 +90,10 @@ class TestGenerator {
 
             let tempData = data
                 .replace(new RegExp("pathToBaseTest", 'g'), TestGenerator.getPathPrefix(savPath))
-                .replace(new RegExp("targetFile", 'g'), fileName)
-                .replace(new RegExp("pathToSrc", 'g'), TestGenerator.getPathPrefix(srcPath,"src"))
-                .replace(new RegExp("unitTestPath", 'g'), TestGenerator.getPathPrefix(savPath, "unit"))
-                .replace(new RegExp("ClassName", 'g'), fileName)
-                .replace(new RegExp("(.js)", 'g'), "");
+                .replace(new RegExp("targetFile", 'g'),  fileName)
+                .replace(new RegExp("targetFileName", 'g'), TestGenerator.getClassName(fileName))
+                .replace(new RegExp("pathToSrc", 'g'), TestGenerator.getPathPrefix(srcPath))
+                .replace(new RegExp("ClassName", 'g'), TestGenerator.getClassName(fileName));
 
             fs.writeFile(savPath + fileName, tempData, function (err) {
                 if (err) {
@@ -98,8 +105,6 @@ class TestGenerator {
             console.error("Error details :" + err);
         }
     };
-
-
-};
+}
 
 module.exports = TestGenerator;

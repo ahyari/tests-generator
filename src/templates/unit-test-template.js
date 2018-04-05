@@ -8,7 +8,7 @@ const assert = require('chai').assert;
 
 const BaseTest = require('pathToBaseTestBaseTest');
 
-var targetFile = require('pathToSrctargetFile');
+var targetFileName = require('pathToSrc/src/targetFile');
 
 class ClassName extends BaseTest {
 
